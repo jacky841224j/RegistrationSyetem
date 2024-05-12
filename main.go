@@ -1,11 +1,11 @@
 package main
 
 import (
-	routes "gotest/router"
+	Routes "RegistrationSyetem/Route"
 	"net/http"
 )
 
 func main() {
-	router := routes.NewRouter()
+	router := Routes.NewRouter()
 	http.ListenAndServe(":3000", router)
 }

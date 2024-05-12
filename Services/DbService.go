@@ -21,7 +21,7 @@ const (
 
 var DB *sql.DB
 
-func Open() {
+func DBOpen() {
 	// 組合sql連線字串
 	conn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s", UserName, Password, Addr, Port, Database)
 	// 連接MySQL
@@ -36,7 +36,7 @@ func Open() {
 	DB.SetMaxIdleConns(MaxIdleConns)
 }
 
-func Create(sqlcommnd string) (int64, error) {
+func Exec(sqlcommnd string) (int64, error) {
 
 	//組合sql連線字串
 	row, err := DB.Exec(sqlcommnd)
