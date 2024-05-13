@@ -1,26 +1,26 @@
-package routes
+package route
 
 import (
 	"net/http"
 
-	"RegistrationSyetem/Controller"
-	"RegistrationSyetem/Dto"
-	"RegistrationSyetem/Services"
+	"RegistrationSyetem/controller"
+	"RegistrationSyetem/dto"
+	"RegistrationSyetem/services"
 
 	"github.com/gorilla/mux"
 )
 
-type Route struct {
+type RouteType struct {
 	Method     string
 	Pattern    string
 	Handle     http.HandlerFunc
 	Middleware mux.MiddlewareFunc
 }
 
-var routes []Route
+var routes []RouteType
 
 func init() {
-	register("POST", "/user/creatUser", Controller.CreateUser, nil)
+	register("POST", "/user/creatUser", controller.CreateUser, nil)
 	register("GET", "/test", Test, nil)
 }
 
@@ -39,11 +39,11 @@ func NewRouter() *mux.Router {
 }
 
 func register(method, pattern string, handler http.HandlerFunc, middleware mux.MiddlewareFunc) {
-	routes = append(routes, Route{method, pattern, handler, middleware})
+	routes = append(routes, RouteType{method, pattern, handler, middleware})
 }
 
 func Test(w http.ResponseWriter, r *http.Request) {
 
-	response := Dto.ApiResponse{ResultCode: "200", ResultMessage: "hello world"}
-	Services.ResponseWithJson(w, http.StatusOK, response)
+	response := dto.ApiResponse{ResultCode: "200", ResultMessage: "hello world"}
+	services.ResponseWithJson(w, http.StatusOK, response)
 }

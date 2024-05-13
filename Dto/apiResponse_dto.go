@@ -1,4 +1,4 @@
-package Dto
+package dto
 
 type ApiResponse struct {
 	ResultCode    string

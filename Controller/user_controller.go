@@ -1,8 +1,8 @@
-package Controller
+package controller
 
 import (
-	"RegistrationSyetem/Dto"
-	"RegistrationSyetem/Services"
+	"RegistrationSyetem/dto"
+	"RegistrationSyetem/services"
 	"encoding/json"
 	"io"
 	"net/http"
@@ -18,20 +18,20 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var user Dto.User
+	var user dto.User
 	//
 	err = json.Unmarshal(b, &user)
 	if err != nil {
 		http.Error(w, err.Error(), 500)
 		return
 	}
-	err = Services.CreateUser(user)
+	err = services.CreateUser(user)
 
 	if err != nil {
 		http.Error(w, err.Error(), 500)
 		return
 	}
 
-	response := Dto.ApiResponse{ResultCode: "200", ResultMessage: "會員新增成功"}
-	Services.ResponseWithJson(w, http.StatusOK, response)
+	response := dto.ApiResponse{ResultCode: "200", ResultMessage: "會員新增成功"}
+	services.ResponseWithJson(w, http.StatusOK, response)
 }

@@ -1,7 +1,7 @@
 package main
 
 import (
-	Routes "RegistrationSyetem/Route"
+	Routes "RegistrationSyetem/route"
 	"net/http"
 )
 

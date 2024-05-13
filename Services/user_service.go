@@ -1,11 +1,11 @@
-package Services
+package services
 
 import (
-	"RegistrationSyetem/Dto"
+	"RegistrationSyetem/dto"
 	"fmt"
 )
 
-func CreateUser(user Dto.User) error {
+func CreateUser(user dto.User) error {
 
 	DBOpen()
 
