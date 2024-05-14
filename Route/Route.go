@@ -20,7 +20,8 @@ type RouteType struct {
 var routes []RouteType
 
 func init() {
-	register("POST", "/user/creatUser", controller.CreateUser, nil)
+	register("POST", "/user/createUser", controller.CreateUser, nil)
+	register("POST", "/calendar/createClendar", controller.CreateUser, nil)
 	register("GET", "/test", Test, nil)
 }
 
