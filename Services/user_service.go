@@ -5,8 +5,9 @@ import (
 	"fmt"
 )
 
-func CreateUser(user dto.User) error {
+func CreateUser(dto dto.User) error {
 
+	//連接資料庫
 	DBOpen()
 
 	stmt, err := DB.Prepare("INSERT INTO member (name,birth) VALUES (?,?)")
@@ -14,11 +15,11 @@ func CreateUser(user dto.User) error {
 		return err
 	}
 	defer stmt.Close()
-	_, err = stmt.Exec(user.Name, user.Birth)
+	_, err = stmt.Exec(dto.Name, dto.Birth)
 	if err != nil {
 		return err
 	}
 
-	fmt.Println("User新增成功", user)
+	fmt.Println("User新增成功", dto)
 	return nil
 }
