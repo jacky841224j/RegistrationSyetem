@@ -36,6 +36,10 @@ func DBOpen() {
 	DB.SetMaxIdleConns(MaxIdleConns)
 }
 
+func DBClose() {
+	DB.Close()
+}
+
 func Exec(sqlcommnd string) (int64, error) {
 
 	//組合sql連線字串
