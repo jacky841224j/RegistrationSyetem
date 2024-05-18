@@ -25,6 +25,11 @@ func CreateCalendar(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	response := dto.ApiResponse{ResultCode: "200", ResultMessage: "會員新增成功"}
+	if err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
+
+	response := dto.ApiResponse{ResultCode: "200", ResultMessage: "行程新增成功"}
 	services.ResponseWithJson(w, http.StatusOK, response)
 }
